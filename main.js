@@ -74,8 +74,8 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   let W, H, particles = [];
 
   const COLORS = [
-    'rgba(192,57,43,',
-    'rgba(231,76,60,',
+    'rgba(185,28,28,',
+    'rgba(220,38,38,',
     'rgba(180,180,180,',
     'rgba(240,240,240,',
   ];
@@ -123,7 +123,7 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(192,57,43,${opacity})`;
+          ctx.strokeStyle = `rgba(185,28,28,${opacity})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
