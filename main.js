@@ -263,12 +263,8 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   const success = qs('#form-success');
   if (!form) return;
 
-  /* Leer la URL del Web App desde info.json */
-  let webAppUrl = '';
-  fetch('info.json')
-    .then(r => r.json())
-    .then(info => { webAppUrl = info['googleSheetWebAppUrl'] || ''; })
-    .catch(() => {});
+  /* URL del Google Apps Script Web App */
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbwnKPqu9fI9fWg3GqtHn3tAUWed9cvIoMm_lVHWyirMe5VmrSW--Ge20dnXNiBtGbxv/exec';
 
   /* Número de WhatsApp del abogado (sin + ni espacios) */
   const WA_NUMBER = '573168118093';
@@ -305,7 +301,7 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     /* ── 1. Guardar en Google Sheets ─────────────────────── */
     const payload = { nombre, email, telefono, asunto, mensaje };
 
-    if (webAppUrl && !webAppUrl.includes('PEGAR_URL')) {
+    if (webAppUrl) {
       try {
         await fetch(webAppUrl, {
           method : 'POST',
