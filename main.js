@@ -305,8 +305,8 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       try {
         await fetch(webAppUrl, {
           method : 'POST',
-          mode   : 'no-cors',         // Apps Script no devuelve CORS headers en POST
-          headers: { 'Content-Type': 'application/json' },
+          mode   : 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
           body   : JSON.stringify(payload),
         });
       } catch (_) {
