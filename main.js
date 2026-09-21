@@ -303,11 +303,14 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
     if (webAppUrl) {
       try {
+        // URLSearchParams es el formato garantizado para no-cors
+        const formData = new URLSearchParams();
+        Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
+
         await fetch(webAppUrl, {
           method : 'POST',
           mode   : 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body   : JSON.stringify(payload),
+          body   : formData,
         });
       } catch (_) {
         /* Si falla el sheet, continuamos igual — WhatsApp es prioritario */
